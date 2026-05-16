@@ -25,7 +25,7 @@ dreamForm.addEventListener('submit', async (e) => {
     btnLoading.style.display = 'inline';
 
     try {
-        const response = await fetch('/api/dreams', {
+        const response = await fetch('/dreams', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ dreamForm.addEventListener('submit', async (e) => {
 // Load all dreams
 async function loadDreams() {
     try {
-        const response = await fetch('/api/dreams');
+        const response = await fetch('/dreams');
         if (!response.ok) {
             throw new Error('Failed to fetch dreams');
         }
@@ -122,7 +122,7 @@ async function deleteDream(id) {
     }
 
     try {
-        const response = await fetch(`/api/dreams/${id}`, {
+        const response = await fetch(`/dreams/${id}`, {
             method: 'DELETE',
         });
 

@@ -2,8 +2,12 @@ import express from 'express';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import helmet from 'helmet'
+import dotenv from 'dotenv';
 import { initDatabase } from './config/database-init.js';
 import dreamsRouter from './routes/dreams.js';
+
+// Load environment variables
+dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -27,8 +31,8 @@ const PORT = process.env.PORT || 3001;
 app.use(express.json());
 app.use(express.static(join(__dirname, 'public')));
 
-// API Routes
-app.use('/api/dreams', dreamsRouter);
+//  Routes
+app.use('/dreams', dreamsRouter);
 
 // Initialize database then start server
 initDatabase().then(() => {
